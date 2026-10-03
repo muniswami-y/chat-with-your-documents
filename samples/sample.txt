@@ -1,0 +1,9 @@
+Retrieval-Augmented Generation (RAG) is a technique where a language model is given relevant
+passages from external documents before answering. This reduces hallucinations because the model
+answers from real context instead of guessing. A RAG system splits documents into chunks, converts
+each chunk into an embedding vector, and stores the vectors in a vector database. When a user asks
+a question, the question is embedded too, the most similar chunks are retrieved using cosine
+similarity, and those chunks are passed to the LLM as context.
+
+Chunk size matters. Small chunks are precise but may miss context. Large chunks keep context but
+add noise. Overlap between chunks helps avoid cutting an idea in half.
