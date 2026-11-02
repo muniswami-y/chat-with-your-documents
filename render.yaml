@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: rag-learning-lab
+    runtime: python
+    plan: free
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: streamlit run app.py --server.port $PORT --server.address 0.0.0.0
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODELS
+        value: gemini-3.5-flash-lite,gemini-3.8-flash
+      - key: EMBED_MODEL
+        value: gemini-embedding-001
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: llama-3.3-70b-versatile
+    healthCheckPath: /_stcore/health
